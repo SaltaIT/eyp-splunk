@@ -1,7 +1,7 @@
 class splunk::params {
 
-  $package_name='splunk'
-  $service_name='splunk'
+  $forwarder_package_name='splunk'
+  $forwarder_service_name='splunk'
 
   case $::osfamily
   {
