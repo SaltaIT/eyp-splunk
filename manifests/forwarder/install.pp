@@ -3,7 +3,7 @@ class splunk::forwarder::install inherits splunk {
   Exec {
     path => '/bin:/sbin:/usr/bin:/usr/sbin',
   }
-  
+
   if($splunk::forwarder::manage_package)
   {
     if($splunk::forwarder::package_source_url==undef)
@@ -17,17 +17,17 @@ class splunk::forwarder::install inherits splunk {
         unless  => 'which wget',
       }
 
-      exec { "wget splunk forwarder ${srcdir} ${package_source_url}":
-        command => "wget ${package_source_url} -O ${srcdir}/splunkforwarder.${package_provider}",
-        creates => "${srcdir}/splunkforwarder.${package_provider}",
+      exec { "wget splunk forwarder ${splunk::params::srcdir} ${splunk::forwarder::package_source_url}":
+        command => "wget ${splunk::forwarder::package_source_url} -O ${srcdir}/splunkforwarder.${splunk::params::package_provider}",
+        creates => "${splunk::forwarder::srcdir}/splunkforwarder.${splunk::params::package_provider}",
         require => Exec['eyp-splunk forwarder which wget'],
       }
 
       package { $splunk::params::forwarder_package_name:
         ensure   => $splunk::forwarder::package_ensure,
         provider => $splunk::params::package_provider,
-        source   => "${srcdir}/splunkforwarder.${package_provider}",
-        require  => Exec["wget splunk forwarder ${srcdir} ${package_source_url}"],
+        source   => "${splunk::forwarder::srcdir}/splunkforwarder.${splunk::params::package_provider}",
+        require  => Exec["wget splunk forwarder ${splunk::forwarder::srcdir} ${splunk::params::package_source_url}"],
       }
     }
   }
