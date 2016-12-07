@@ -18,7 +18,7 @@ class splunk::forwarder::install inherits splunk {
       }
 
       exec { "wget splunk forwarder ${splunk::params::srcdir} ${splunk::forwarder::package_source_url}":
-        command => "wget ${splunk::forwarder::package_source_url} -O ${srcdir}/splunkforwarder.${splunk::params::package_provider}",
+        command => "wget ${splunk::forwarder::package_source_url} -O ${splunk::forwarder::srcdir}/splunkforwarder.${splunk::params::package_provider}",
         creates => "${splunk::forwarder::srcdir}/splunkforwarder.${splunk::params::package_provider}",
         require => Exec['eyp-splunk forwarder which wget'],
       }
