@@ -5,6 +5,8 @@ class splunk::forwarder(
                             $manage_docker_service = true,
                             $service_ensure        = 'running',
                             $service_enable        = true,
+                            $package_source_url    = undef,
+                            $srcdir                = '/usr/local/src',
                           ) inherits splunk{
 
   validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')

@@ -1,12 +1,13 @@
 class splunk::params {
 
-  $forwarder_package_name='splunk'
+  $forwarder_package_name='splunkforwarder'
   $forwarder_service_name='splunk'
 
   case $::osfamily
   {
     'redhat':
     {
+      $package_provider='rpm'
       case $::operatingsystemrelease
       {
         /^[5-7].*$/:
@@ -25,6 +26,7 @@ class splunk::params {
           {
             /^14.*$/:
             {
+              fail('not implemented')
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
