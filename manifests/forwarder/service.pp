@@ -16,8 +16,10 @@ class splunk::forwarder::service inherits splunk {
     if($splunk::forwarder::manage_service)
     {
       service { $splunk::params::forwarder_service_name:
-        ensure => $splunk::forwarder::service_ensure,
-        enable => $splunk::forwarder::service_enable,
+        ensure    => $splunk::forwarder::service_ensure,
+        enable    => $splunk::forwarder::service_enable,
+        pattern   => 'splunkd',
+        hasstatus => true,
       }
     }
   }
