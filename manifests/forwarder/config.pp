@@ -17,4 +17,12 @@ class splunk::forwarder::config inherits splunk {
     content => template("${module_name}/forwarder/deploymentclient.erb"),
   }
 
+  file { '/opt/splunkforwarder/etc/splunk-launch.conf':
+    ensure  => 'present'
+    owner   => 'splunk',
+    group   => 'splunk',
+    mode    => '0644',
+    content => template("${module_name}/forwarder/splunklaunch.erb"),
+  }
+
 }
