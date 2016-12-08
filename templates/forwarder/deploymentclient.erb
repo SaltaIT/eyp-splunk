@@ -1,2 +1,2 @@
 [target-broker:deploymentServer]
-targetUri = <%= @deployment_server %>
+targetUri = <%= scope.lookupvar('splunk::forwarder::deployment_server') %>
