@@ -29,6 +29,12 @@ class splunk::forwarder::install inherits splunk {
         source   => "${splunk::forwarder::srcdir}/splunkforwarder.${splunk::params::package_provider}",
         require  => Exec["wget splunk forwarder ${splunk::params::srcdir} ${splunk::forwarder::package_source_url}"],
       }
+
+      exec { 'splunk_accept_license':
+        command   => '/opt/splunkforwarder/bin/splunk --accept-license enable boot-start --answer-yes --no-prompt',
+        require   => Package[$splunk::params::forwarder_package_name],
+        onlyif    => '/usr/bin/test -f /opt/splunkforwarder/ftr',
+      }
     }
   }
 
