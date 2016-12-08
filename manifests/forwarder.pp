@@ -7,6 +7,7 @@ class splunk::forwarder(
                             $service_enable        = true,
                             $package_source_url    = undef,
                             $srcdir                = '/usr/local/src',
+                            $deployment_server     = undef,
                           ) inherits splunk{
 
   validate_re($package_ensure, [ '^present$', '^installed$', '^absent$', '^purged$', '^held$', '^latest$' ], 'Not a supported package_ensure: present/absent/purged/held/latest')
