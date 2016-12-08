@@ -31,9 +31,16 @@ class splunk::forwarder::install inherits splunk {
       }
 
       exec { 'splunk_accept_license':
-        command   => '/opt/splunkforwarder/bin/splunk --accept-license enable boot-start --answer-yes --no-prompt',
-        require   => Package[$splunk::params::forwarder_package_name],
-        onlyif    => '/usr/bin/test -f /opt/splunkforwarder/ftr',
+        command => '/opt/splunkforwarder/bin/splunk --accept-license enable boot-start --answer-yes --no-prompt',
+        require => Package[$splunk::params::forwarder_package_name],
+        onlyif  => '/usr/bin/test -f /opt/splunkforwarder/ftr',
+        notify  => Exec['kill first run splunk'],
+      }
+
+      exec { 'kill first run splunk':
+        command     => 'pkill splunkd',
+        refreshonly => true,
+        require     => Exec['splunk_accept_license'],
       }
     }
   }
