@@ -18,7 +18,7 @@ class splunk::forwarder::config inherits splunk {
   }
 
   file { '/opt/splunkforwarder/etc/splunk-launch.conf':
-    ensure  => 'present'
+    ensure  => 'present',
     owner   => 'splunk',
     group   => 'splunk',
     mode    => '0644',
