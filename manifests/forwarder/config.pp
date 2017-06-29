@@ -2,7 +2,7 @@ class splunk::forwarder::config inherits splunk {
 
   if($splunk::forwarder::deployment_server==undef)
   {
-      $deployment_ensure='absent'
+    $deployment_ensure='absent'
   }
   else
   {
