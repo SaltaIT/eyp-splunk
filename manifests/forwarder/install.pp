@@ -37,7 +37,7 @@ class splunk::forwarder::install inherits splunk {
         notify  => Exec['kill first run splunk'],
       }
 
-       # dont want to have splunk started out of puppet control
+      # dont want to have splunk started out of puppet control
       exec { 'kill first run splunk':
         command     => 'pkill splunkd',
         refreshonly => true,
