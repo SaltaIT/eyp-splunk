@@ -7,6 +7,7 @@
 #
 # [tcpout-server://{{ splunk_server_ip }}:9997]
 #
+# puppet2sitepp @splunkfwdtcpouts
 define splunk::forwarder::outputs::tcpout (
                                             $target_group   = $name,
                                             $set_as_default = false,

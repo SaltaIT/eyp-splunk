@@ -9,6 +9,7 @@
 # index = auditd
 # sourcetype = linux:audit
 #
+# puppet2sitepp @splunkfwdmonitors
 define splunk::forwarder::monitor (
                                     $index,
                                     $sourcetype,
