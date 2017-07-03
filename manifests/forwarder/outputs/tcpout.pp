@@ -1,4 +1,6 @@
 #
+# http://docs.splunk.com/Documentation/SplunkCloud/6.6.0/Forwarding/Configureforwarderswithoutputs.confd
+#
 # [tcpout]
 # defaultGroup = default-autolb-group
 #
