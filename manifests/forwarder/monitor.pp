@@ -1,4 +1,6 @@
 #
+# https://docs.splunk.com/Documentation/SplunkCloud/6.6.0/Forwarding/Configuredatacollectiononforwarderswithinputs.conf
+#
 # [monitor:///var/log/messages
 # index = system
 # sourcetype =  messages
