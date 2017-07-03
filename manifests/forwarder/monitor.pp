@@ -21,11 +21,12 @@ define splunk::forwarder::monitor (
   if(!defined(Concat['/opt/splunkforwarder/etc/system/local/inputs.conf']))
   {
     concat { '/opt/splunkforwarder/etc/system/local/inputs.conf':
-      ensure => 'present',
-      owner  => 'splunk',
-      group  => 'splunk',
-      mode   => '0644',
-      notify => Class['splunk::forwarder::service'],
+      ensure  => 'present',
+      owner   => 'splunk',
+      group   => 'splunk',
+      mode    => '0644',
+      notify  => Class['splunk::forwarder::service'],
+      require => Class['splunk::forwarder::install'],
     }
   }
 
