@@ -42,20 +42,43 @@ management, etc.) this is the time to mention it.
 
 ### Setup Requirements
 
-This module requires pluginsync enabled 
+This module requires pluginsync enabled
 
 ### Beginning with splunk
 
-The very basic steps needed for a user to get the module up and running.
+```puppet
+class { 'splunk::forwarder':
+  deployment_server => 'clads01.systemadmin.es:8089',
+  os_user => 'root',
+  package_source_url => 'https://.../splunkforwarder-6.5.1-f74036626f0c-linux-2.6-x86_64.rpm',
+}
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+splunk::forwarder::monitor { '/var/log/messages':
+  index => 'system',
+  sourcetype => 'messages',
+}
+
+splunk::forwarder::monitor { '/var/log/audit/audit.log':
+  index => 'auditd',
+  sourcetype => 'linux:audit',
+}
+
+splunk::forwarder::outputs::tcpout { 'default':
+  set_as_default => true,
+  servers => [ '1.1.1.1:1234', '2.2.2.2:5678' ],
+}
+```
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+```yaml
+---
+classes:
+  - splunk::forwarder
+splunk::forwarder::deployment_server: 'siemds.systemadmin.es:8089'
+splunk::forwarder::os_user: root
+splunk::forwarder::package_source_url: https://.../splunkforwarder-6.5.1-f74036626f0c-linux-2.6-x86_64.rpm'
+```
 
 ## Reference
 
