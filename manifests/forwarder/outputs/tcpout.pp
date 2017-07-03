@@ -26,7 +26,7 @@ define splunk::forwarder::outputs::tcpout (
 
   if($set_as_default)
   {
-    concat::fragment{ 'outputs.conf default':
+    concat::fragment{ 'outputs.conf global settings: default':
       target  => '/opt/splunkforwarder/etc/system/local/outputs.conf',
       order   => '00',
       content => template("${module_name}/forwarder/outputs/default.erb"),
