@@ -23,7 +23,7 @@ define splunk::forwarder::monitor (
       group  => 'splunk',
       mode   => '0644',
       notify => Class['splunk::forwarder::service'],
-    }  
+    }
   }
 
   concat::fragment{ "inputs.conf ${path}":
