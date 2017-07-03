@@ -12,8 +12,6 @@ define splunk::forwarder::outputs::tcpout (
                                             $set_as_default = false,
                                             $servers        = [],
                                           ) {
-  #
-  validate_hash($servers)
 
   if(!defined(Concat['/opt/splunkforwarder/etc/system/local/outputs.conf']))
   {
