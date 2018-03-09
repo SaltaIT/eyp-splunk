@@ -25,7 +25,7 @@ class splunk::forwarder::install inherits splunk {
     # WantedBy=multi-user.target
     systemd::service { 'splunk':
       description       => 'Splunk',
-      after_units       => [ 'network.target' ]
+      after_units       => [ 'network.target' ],
       wants             => [ 'network.target' ],
       type              => 'forking',
       remain_after_exit => false,
