@@ -1,12 +1,5 @@
 class splunk::forwarder::service inherits splunk {
 
-  #
-  validate_bool($splunk::forwarder::manage_docker_service)
-  validate_bool($splunk::forwarder::manage_service)
-  validate_bool($splunk::forwarder::service_enable)
-
-  validate_re($splunk::forwarder::service_ensure, [ '^running$', '^stopped$' ], "Not a valid daemon status: ${splunk::forwarder::service_ensure}")
-
   $is_docker_container_var=getvar('::eyp_docker_iscontainer')
   $is_docker_container=str2bool($is_docker_container_var)
 
