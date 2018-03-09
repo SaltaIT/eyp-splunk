@@ -1,4 +1,6 @@
 #
+# http://docs.splunk.com/Documentation/SplunkCloud/6.6.0/Forwarding/Configureforwarderswithoutputs.confd
+#
 # [tcpout]
 # defaultGroup = default-autolb-group
 #
@@ -7,6 +9,7 @@
 #
 # [tcpout-server://{{ splunk_server_ip }}:9997]
 #
+# puppet2sitepp @splunkfwdtcpouts
 define splunk::forwarder::outputs::tcpout (
                                             $target_group   = $name,
                                             $set_as_default = false,
@@ -16,11 +19,12 @@ define splunk::forwarder::outputs::tcpout (
   if(!defined(Concat['/opt/splunkforwarder/etc/system/local/outputs.conf']))
   {
     concat { '/opt/splunkforwarder/etc/system/local/outputs.conf':
-      ensure => 'present',
-      owner  => 'splunk',
-      group  => 'splunk',
-      mode   => '0644',
-      notify => Class['splunk::forwarder::service'],
+      ensure  => 'present',
+      owner   => 'splunk',
+      group   => 'splunk',
+      mode    => '0644',
+      notify  => Class['splunk::forwarder::service'],
+      require => Class['splunk::forwarder::install'],
     }
   }
 

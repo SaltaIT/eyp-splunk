@@ -1,4 +1,6 @@
 #
+# https://docs.splunk.com/Documentation/SplunkCloud/6.6.0/Forwarding/Configuredatacollectiononforwarderswithinputs.conf
+#
 # [monitor:///var/log/messages
 # index = system
 # sourcetype =  messages
@@ -9,6 +11,7 @@
 # index = auditd
 # sourcetype = linux:audit
 #
+# puppet2sitepp @splunkfwdmonitors
 define splunk::forwarder::monitor (
                                     $index,
                                     $sourcetype,
@@ -18,11 +21,12 @@ define splunk::forwarder::monitor (
   if(!defined(Concat['/opt/splunkforwarder/etc/system/local/inputs.conf']))
   {
     concat { '/opt/splunkforwarder/etc/system/local/inputs.conf':
-      ensure => 'present',
-      owner  => 'splunk',
-      group  => 'splunk',
-      mode   => '0644',
-      notify => Class['splunk::forwarder::service'],
+      ensure  => 'present',
+      owner   => 'splunk',
+      group   => 'splunk',
+      mode    => '0644',
+      notify  => Class['splunk::forwarder::service'],
+      require => Class['splunk::forwarder::install'],
     }
   }
 

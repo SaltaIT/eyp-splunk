@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.2
+
+* added support for systemd
+
 ## 0.1.1
 
 * added:
