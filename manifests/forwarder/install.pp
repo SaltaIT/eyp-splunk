@@ -6,33 +6,14 @@ class splunk::forwarder::install inherits splunk {
 
   if($splunk::params::systemd)
   {
-    # [Unit]
-    # Description=Splunk
-    # After=network.target
-    # Wants=network.target
-    #
-    # [Service]
-    # Type=forking
-    # RemainAfterExit=False
-    # User=splunk
-    # Group=splunk
-    # LimitNOFILE=65536
-    # ExecStart=/opt/splunk/bin/splunk start --accept-license --answer-yes --no-prompt
-    # ExecStop=/opt/splunk/bin/splunk stop
-    # PIDFile=/opt/splunk/var/run/splunk/splunkd.pid
-    #
-    # [Install]
-    # WantedBy=multi-user.target
     systemd::service { 'splunk':
       description       => 'Splunk',
       after_units       => [ 'network.target' ],
       wants             => [ 'network.target' ],
       type              => 'forking',
       remain_after_exit => false,
-      user              => 'splunk',
-      group             => 'splunk',
       limit_nofile      => '65536',
-      execstart         => '/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt',
+      execstart         => '/opt/splunkforwarder/bin/splunk start',
       execstop          => '/opt/splunkforwarder/bin/splunk stop',
       pid_file          => '/opt/splunkforwarder/var/run/splunk/splunkd.pid',
       wantedby          => [ 'multi-user.target' ],
