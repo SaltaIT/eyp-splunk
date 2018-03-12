@@ -32,9 +32,9 @@ class splunk::forwarder::install inherits splunk {
       user              => 'splunk',
       group             => 'splunk',
       limit_nofile      => '65536',
-      execstart         => '/opt/splunk/bin/splunk start --accept-license --answer-yes --no-prompt',
-      execstop          => '/opt/splunk/bin/splunk stop',
-      pid_file          => '/opt/splunk/var/run/splunk/splunkd.pid',
+      execstart         => '/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt',
+      execstop          => '/opt/splunkforwarder/bin/splunk stop',
+      pid_file          => '/opt/splunkforwarder/var/run/splunk/splunkd.pid',
       wantedby          => [ 'multi-user.target' ],
     }
   }
