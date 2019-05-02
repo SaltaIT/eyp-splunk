@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.3
+
+* Updated metadata for **eyp-systemd 0.2.0**
+
 ## 0.1.2
 
 * added support for systemd
