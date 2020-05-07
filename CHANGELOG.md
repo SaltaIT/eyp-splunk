@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.4
+
+* added **phoneHomeIntervalInSecs** to **splunk::forwarder**
+* Updated metadata for **eyp-systemd 0.3.0**
+
 ## 0.1.3
 
 * Updated metadata for **eyp-systemd 0.2.0**
