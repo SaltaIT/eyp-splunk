@@ -1,6 +1,6 @@
 [target-broker:deploymentServer]
 targetUri = <%= scope.lookupvar('splunk::forwarder::deployment_server') %>
 
-<% if defined?(@phone_home_interval_in_secs) -%>
+<% if defined?(scope.lookupvar('splunk::forwarder::phone_home_interval_in_secs')) -%>
 phoneHomeIntervalInSecs = <%= scope.lookupvar('splunk::forwarder::phone_home_interval_in_secs') %>
 <% end -%>
