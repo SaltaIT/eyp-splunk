@@ -1,6 +1,6 @@
 {
   "name": "eyp-splunk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "eyp",
   "summary": "splunk forwarder",
   "license": "Apache-2.0",
