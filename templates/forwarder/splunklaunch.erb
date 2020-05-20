@@ -22,8 +22,8 @@ SPLUNK_WEB_NAME=splunkweb
 # is, or can effectively become via setuid(2), $SPLUNK_OS_USER.
 # (This setting can be specified as username or as UID.)
 #
-<% if defined?(@os_user) %>
-SPLUNK_OS_USER = "<%= @os_user %>"
+<% if defined?(scope.lookupvar('splunk::forwarder::os_user')) %>
+SPLUNK_OS_USER = "<%= scope.lookupvar('splunk::forwarder::os_user') %>"
 <% else -%>
 # SPLUNK_OS_USER
 <% end %>
