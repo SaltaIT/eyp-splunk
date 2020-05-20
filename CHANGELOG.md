@@ -3,6 +3,7 @@
 ## 0.1.6
 
 * bugfix template
+* added github actions testing
 
 ## 0.1.5
 
